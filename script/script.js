@@ -5,8 +5,9 @@ const tasks = []
 
 formularioTask.addEventListener('submit', (e)=>{
     e.preventDefault();
-
-    adicionarTask()
+    const taskId = formularioTask.getAttribute('data-id')
+    !taskId? adicionarTask() : atualizarTask(taskId, task.value)
+    
 
     formularioTask.reset()
 
@@ -27,11 +28,15 @@ function adicionarTask(){
     mostrarTasks()
 }
 
+function atualizarTask(id, novoTexto) {
+    const taskAtualizada = tasks.find(task => task.id == id)
+    taskAtualizada.text = novoTexto
+    mostrarTasks()
+}
+
 function concluirTask(id){
     const taskConcluida = tasks.find(task => task.id == id)
-
     taskConcluida.completado = !taskConcluida.completado
-    
     mostrarTasks()
 }
 
@@ -43,7 +48,7 @@ function excluirTask(id){
 function editarTask(id){
     const updateTask = tasks.find(task => task.id == id)
     task.value = updateTask.text;
-    
+    formularioTask.setAttribute('data-id', id)
     
 }
 
@@ -59,7 +64,7 @@ function mostrarTasks() {
         tarefa.innerHTML = `
         <section class="concluir" onclick = "concluirTask('${task.id}')"></section>
         <span>${task.text}</span>
-        <button class="btn btn-completar" onclick="editarTask('${task.id}')">Editar</button>
+        <button class="btn-editar" onclick="editarTask('${task.id}')">Editar</button>
         <button class="btn btn-excluir" onclick="excluirTask('${task.id}')">Excluir</button>
         `
         lista.appendChild(tarefa)

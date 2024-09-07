@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+@import url('https://fonts.cdnfonts.com/css/tt-firs-neue-trl');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all 0.2s ease-out;
+    font-family: "tt firs neue trl", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;;
 }
 
 .wrapper{
@@ -37,6 +44,9 @@ form{
         font-size: 2rem;
         font-weight: 900;
     }
+}
+.todoList{
+    padding-top: 5rem;
 }
 
 #label-task{
@@ -80,6 +90,27 @@ form{
 
         button{
             height: 80%;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f9f9f9 ;
+            cursor: pointer;
+        }
+
+    }
+    .btn-editar{
+        background-color: #00E599;
+        
+        &:hover{
+            box-shadow: 0 0 0 2px #00E599;
+        }
+    }
+    .btn-excluir{
+        background-color: #FF3366;
+
+        &:hover{
+            box-shadow: 0 0 0 2px #FF3366;
         }
     }
 }
