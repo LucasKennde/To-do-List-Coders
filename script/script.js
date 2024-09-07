@@ -31,6 +31,7 @@ function adicionarTask(){
 function atualizarTask(id, novoTexto) {
     const taskAtualizada = tasks.find(task => task.id == id)
     taskAtualizada.text = novoTexto
+    formularioTask.removeAttribute('data-id');
     mostrarTasks()
 }
 
