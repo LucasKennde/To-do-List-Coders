@@ -43,7 +43,7 @@ function adicionarTask(){
 }
 
 function atualizarTask(id, novoTexto) {
-    if(verificarInput()){
+    if(!verificarInput()){
         return
     }
     const taskAtualizada = tasks.find(task => task.id == id)
