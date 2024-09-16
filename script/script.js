@@ -3,7 +3,7 @@ const formularioTask = document.querySelector('#formulario-task')
 const task = document.querySelector('#task')
 
 const lista = document.querySelector('.lista-tasks')
-const tasks = []
+const tasks = JSON.parse(localStorage.getItem('tasks')) || []
 
 formularioTask.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -38,7 +38,7 @@ function adicionarTask(){
         completado: false
     }
     tasks.push(newTask)
-
+    localStorage.setItem('tasks', JSON.stringify(tasks))
     mostrarTasks()
 }
 
@@ -48,6 +48,7 @@ function atualizarTask(id, novoTexto) {
     }
     const taskAtualizada = tasks.find(task => task.id == id)
     taskAtualizada.text = novoTexto
+    localStorage.setItem('tasks', JSON.stringify(tasks))
     formularioTask.removeAttribute('data-id');
     mostrarTasks()
 }
@@ -61,6 +62,7 @@ function concluirTask(id){
 function excluirTask(id){
     const taskIndex = tasks.findIndex(task => task.id == id)
     tasks.splice(taskIndex, 1)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
     mostrarTasks()
 }
 function editarTask(id){
@@ -90,3 +92,4 @@ function mostrarTasks() {
     console.log(tasks)
 }
 
+mostrarTasks()
